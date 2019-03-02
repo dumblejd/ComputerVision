@@ -55,6 +55,7 @@ for i in range(H1, H2 + 1):
             L = 100
         if L < 0:
             L = 0
+        L=int(L)  #set it to int
         luv[i][j] = L, u, v
 
 k = 101
