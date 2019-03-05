@@ -29,8 +29,11 @@ def BGR2xyY(b, g, r):
     X = 0.412453 * r + 0.357580 * g + 0.180423 * b
     Y = 0.212671 * r + 0.715160 * g + 0.072169 * b
     Z = 0.019334 * r + 0.119193 * g + 0.950227 * b
-    x = X / (X + Y + Z)
-    y = Y / (X + Y + Z)
+    x=0
+    y=0
+    if(X+Y+Z)!=0:
+        x = X / (X + Y + Z)
+        y = Y / (X + Y + Z)
     return x, y, Y
 
 
@@ -133,7 +136,10 @@ def XYZ2LUV(x, y, z):
 
 
 def xyY2LUV(x, y, Y):
-    X = x * 1.0 / y * Y
-    Z = (1 - x - y) / y * Y
+    X=0
+    Z=0
+    if(y!=0):
+        X = x * 1.0 / y * Y
+        Z = (1 - x - y) / y * Y
     L, u, v = XYZ2LUV(X, Y, Z)
     return L, u, v
